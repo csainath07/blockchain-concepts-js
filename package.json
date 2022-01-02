@@ -4,12 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "nodemon dev/test.js"
+    "test": "nodemon dev/test.js",
+    "start": "nodemon dev/server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "crypto-js": "^4.1.1"
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.2",
+    "uuid": "^8.3.2"
   }
 }

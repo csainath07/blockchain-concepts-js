@@ -155,5 +155,44 @@ app.post("/register-nodes-bulk", (req, res) => {
   });
   res.json({ note: "Bulk nodes registered successfully" });
 });
+
+/** Validating */
+app.post("/consensus", (req, res) => {
+  const requestPromises = ParasCoin.networkNodes.map((networkNodeUrl) =>
+    axios.get(`${networkNodeUrl}/blockchain`)
+  );
+
+  Promise.all(requestPromises).then((blockchains) => {
+    const currentChainLength = ParasCoin.chain.length;
+    let maxChainLength = currentChainLength;
+    let newLongestChain = null;
+    let newPendingTransactions = null;
+
+    blockchains.forEach((blockchain) => {
+      if (blockchain.chain.length > maxChainLength) {
+        maxChainLength = blockchain.chain.length;
+        newLongestChain = blockchain.chain;
+        newPendingTransactions = blockchain.pendingTransactions;
+      }
+    });
+    if (
+      !newLongestChain ||
+      (newLongestChain && !ParasCoin.chainIsValid(newLongestChain))
+    ) {
+      res.json({
+        note: "Current chain has not been replaced",
+        chain: ParasCoin.chain,
+      });
+    } else if (newLongestChain && ParasCoin.chainIsValid(newLongestChain)) {
+      ParasCoin.chain = newLongestChain;
+      ParasCoin.pendingTransactions = newPendingTransactions;
+      res.json({
+        note: "This chain has been changed successfully",
+        chain: ParasCoin.chain,
+      });
+    }
+  });
+});
+
 // listener
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));

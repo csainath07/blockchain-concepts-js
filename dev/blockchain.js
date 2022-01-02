@@ -61,6 +61,44 @@ class BlockChain {
     }
     return nonce;
   };
+
+  chainIsValid = (blockchain) => {
+    let validChain = true;
+    for (let i = 1; i < blockchain.length; i++) {
+      const currentBlock = blockchain[i];
+      const prevBlock = blockchain[i - 1];
+
+      const blockHash = this.hashBlock(
+        prevBlock["hash"],
+        {
+          transactions: currentBlock["transactions"],
+          index: currentBlock["index"],
+        },
+        currentBlock.nonce
+      );
+
+      const validBlockHash = blockHash.substring(0, 4) === "0000";
+      if (
+        currentBlock["previousBlockHash"] !== prevBlock["hash"] ||
+        !validBlockHash
+      ) {
+        validChain = false;
+        break;
+      }
+    }
+
+    const genesisBlock = blockchain[0];
+    if (
+      genesisBlock.nonce !== 0 ||
+      genesisBlock["hash"] !== 0 ||
+      genesisBlock["previousBlockHash"] !== 0 ||
+      genesisBlock["transactions"].length !== 0
+    ) {
+      validChain = false;
+    }
+
+    return validChain;
+  };
 }
 
 module.exports = {

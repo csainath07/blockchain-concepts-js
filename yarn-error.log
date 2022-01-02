@@ -1,0 +1,41 @@
+Arguments: 
+  /usr/local/Cellar/node/16.6.2/bin/node /usr/local/Cellar/yarn/1.22.11/libexec/bin/yarn.js add -D nodemone
+
+PATH: 
+  /Users/sainathchorghe/.rbenv/shims:/Users/sainathchorghe/.rvm/gems/ruby-2.5.8/bin:/Users/sainathchorghe/.rvm/gems/ruby-2.5.8@global/bin:/Users/sainathchorghe/.rvm/rubies/ruby-2.5.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sainathchorghe/.rvm/gems/ruby-2.5.8/bin:/Users/sainathchorghe/.rvm/gems/ruby-2.5.8@global/bin:/Users/sainathchorghe/.rvm/rubies/ruby-2.5.8/bin:/usr/local/opt/imagemagick@6/bin:/usr/local/opt/mysql@5.7/bin:/Users/sainathchorghe/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Users/sainathchorghe/.rvm/bin
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  16.6.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/nodemone: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.11/libexec/lib/cli.js:66992:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.11/libexec/lib/cli.js:140763:22)
+      at Request.emit (node:events:394:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.11/libexec/lib/cli.js:141735:10)
+      at Request.emit (node:events:394:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.11/libexec/lib/cli.js:141657:12)
+      at Object.onceWrapper (node:events:513:28)
+      at IncomingMessage.emit (node:events:406:35)
+      at endReadableNT (node:internal/streams/readable:1331:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "blockchain",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

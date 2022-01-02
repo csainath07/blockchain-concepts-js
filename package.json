@@ -5,12 +5,15 @@
   "license": "MIT",
   "scripts": {
     "test": "nodemon dev/test.js",
-    "start": "nodemon dev/server.js"
+    "start_node_1": "nodemon dev/networkNode.js 8001 http://localhost:8001",
+    "start_node_2": "nodemon dev/networkNode.js 8002 http://localhost:8002",
+    "start_node_3": "nodemon dev/networkNode.js 8003 http://localhost:8003"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "crypto-js": "^4.1.1",
     "express": "^4.17.2",
     "uuid": "^8.3.2"

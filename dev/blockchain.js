@@ -5,6 +5,9 @@ class BlockChain {
     this.chain = [];
     this.pendingTransactions = [];
     this.createNewBlock(0, 0, 0);
+
+    this.currentNodeUrl = process.argv[3];
+    this.networkNodes = [];
   }
 
   createNewBlock = (nonce, previousBlockHash, hash) => {
